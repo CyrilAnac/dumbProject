@@ -1,19 +1,22 @@
 import * as React from "react";
 import { View, Button, Text, StyleSheet, Alert, TouchableOpacity, ScrollView, TouchableHighlight, Image, TextInput } from "react-native";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
-//import MapView from "react-native-maps";
+import MapView from "react-native-maps";
 
 
 export default function Home({ navigation }) {
   return (
-    <View style={styles.containerHome}>
-      <Text style={styles.bonjourText}>Bonjour Johanna !</Text> 
-      <Smiley/>
-      <LayoutRappels/>  
-      <InformationCancer/>
-      <Search/>
-      <MaListeSymp/>
-    </View>
+    <ScrollView horizontal={false} showsHorizontalScrollIndicator={true}>
+      <View style={styles.containerHome}>
+        <Text style={styles.bonjourText}>Bonjour Johanna !</Text> 
+        <Smiley/>
+        <LayoutRappels/>  
+        <InformationCancer/>
+        <Search/>
+        <MaListeSymp/>
+        <Map/>
+      </View>
+    </ScrollView>
   );
 
   function Search() {
@@ -161,9 +164,9 @@ function MaListeSymp(props) {
   );
 }
 
-/*function Map(props) {
+function Map(props) {
   return (
-    <View style={styles.container}>
+    <View>
       <MapView
         provider={MapView.PROVIDER_GOOGLE}
         initialRegion={{
@@ -177,17 +180,15 @@ function MaListeSymp(props) {
       ></MapView>
     </View>
   );
-}*/
+}
   /*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
         <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
 }
 
 const styles = StyleSheet.create({
   containerHome: {
-    flex: 1,
     backgroundColor: '#FFFFFF',
     alignItems: 'center',
-    //justifyContent: 'center',
   },
   containerSmiley: {
     width: 251,
@@ -211,14 +212,19 @@ const styles = StyleSheet.create({
     width: 300,
     height: 31,
     marginTop: 30,
-    alignItems:'center', 
-    justifyContent: 'center',
+    alignItems:'center',
     flexDirection: "row",
+    justifyContent: 'center' //vertically center
   },
   containerMaListeSymp: {
     width: 400,
     height: 33,
     alignItems: 'center',
+    marginTop: 10
+  },
+  containerMap: {
+    width: 100,
+    height: 100,
     marginTop: 10
   },
   bonjourText: {
@@ -402,5 +408,10 @@ const styles = StyleSheet.create({
     //fontFamily: "arial",
     marginTop: 9,
     textAlign: 'center'
+  },
+  mapView: {
+    height: 290,
+    width: 360,
+    marginTop: 40,
   }
 });
