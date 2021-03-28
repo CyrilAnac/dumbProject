@@ -1,6 +1,7 @@
 import * as React from "react";
-import { View, Button, Text, StyleSheet, Alert, TouchableOpacity, ScrollView, TouchableHighlight, Image } from "react-native";
+import { View, Button, Text, StyleSheet, Alert, TouchableOpacity, ScrollView, TouchableHighlight, Image, TextInput } from "react-native";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
+//import MapView from "react-native-maps";
 
 
 export default function Home({ navigation }) {
@@ -10,11 +11,29 @@ export default function Home({ navigation }) {
       <Smiley/>
       <LayoutRappels/>  
       <InformationCancer/>
-      <Recherche3/>
+      <Search/>
+      <MaListeSymp/>
     </View>
   );
 
-  function Recherche3() {
+  function Search() {
+    return (
+      <View style={styles.containerSearch}>
+        <TextInput style={{height: 40, backgroundColor: '#F1F1F1', borderColor: '#F3F3F3', borderRadius: 100, borderWidth: 1, paddingLeft: 5 }}
+              placeholder=' Recherchez un symtôme, un médicament, ...  '
+                  onChangeText={(text) => {}/*this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}*/}
+                  onSubmitEditing={() => Alert.alert('\'Lancée de la recherche\'')/*this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()*/}
+              >      
+        </TextInput>
+        <Button
+          title="Rechercher"
+          color="#ff5c5c"
+          onPress={() => navigation.navigate("Recherche")}>Recherche
+        </Button>
+      </View>
+    );
+  }
+/*function Recherche3() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Button
@@ -25,8 +44,7 @@ export default function Home({ navigation }) {
       </Button>
       </View>
     );
-  }
-
+  } */
   function Smiley(props) {
     return (
         <View style={styles.containerSmiley}>
@@ -132,6 +150,34 @@ function InformationCancer(props) {
     </View>
   );
 }
+
+function MaListeSymp(props) {
+  return ( //onclick={() => Alert.alert('Simple Button pressed')}
+    <View style={styles.containerMaListeSymp}>
+      <View style={styles.rectMaListeSymp}>
+        <Text onPress={() => Alert.alert('\'Ma liste de symptômes\' pressed')} style={styles.textMaListeSymp}>Ma liste de symptômes</Text>
+      </View>
+    </View>
+  );
+}
+
+/*function Map(props) {
+  return (
+    <View style={styles.container}>
+      <MapView
+        provider={MapView.PROVIDER_GOOGLE}
+        initialRegion={{
+          latitude: 43.6044622,
+          longitude: 2.4442469,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421
+        }}
+        customMapStyle={[]}
+        style={styles.mapView}
+      ></MapView>
+    </View>
+  );
+}*/
   /*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
         <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
 }
@@ -160,6 +206,20 @@ const styles = StyleSheet.create({
     marginTop: 10,
     alignContent: 'center',
     marginTop: 40,
+  },
+  containerSearch: {
+    width: 300,
+    height: 31,
+    marginTop: 30,
+    alignItems:'center', 
+    justifyContent: 'center',
+    flexDirection: "row",
+  },
+  containerMaListeSymp: {
+    width: 400,
+    height: 33,
+    alignItems: 'center',
+    marginTop: 10
   },
   bonjourText: {
     fontSize: 50,
@@ -330,5 +390,17 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginRight: 80,
     marginLeft: 24,
+  },
+  rectMaListeSymp: {
+    width: 450,  //full horizontal, que ca touche le coté gauche et droit du phone tel
+    height: 33,
+    backgroundColor: "rgba(248,231,28,1)",
+    marginTop: 14
+  },
+  textMaListeSymp: {
+    color: "#111111",
+    //fontFamily: "arial",
+    marginTop: 9,
+    textAlign: 'center'
   }
 });
