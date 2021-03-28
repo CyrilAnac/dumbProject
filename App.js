@@ -9,13 +9,13 @@ import {
   Colors,
 } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import Recherche from "./components/Recherche";
+//import { createStackNavigator } from "@react-navigation/stack";
+//import Recherche from "./components/Recherche";
 import Navigation from "./navigations/Navigation";
-import { NavigationActions } from "@react-navigation/native"; // <-- import useNavigation hook
+//import { NavigationActions } from "@react-navigation/native"; // <-- import useNavigation hook
 //import Menu, { MenuItem } from 'react-native-material-menu';
-import FeatherIcon from "react-native-vector-icons/Feather";
-import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
+//import FeatherIcon from "react-native-vector-icons/Feather";
+//import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
 
 // function HomeScreen({ navigation }) {
 //   return (
