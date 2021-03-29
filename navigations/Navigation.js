@@ -1,6 +1,17 @@
 import * as React from "react";
-import { View, LinearGradient, StyleSheet, Header, Image, Button, Text } from "react-native";
-import { createStackNavigator, HeaderBackButton } from "@react-navigation/stack";
+import {
+  View,
+  LinearGradient,
+  StyleSheet,
+  Header,
+  Image,
+  Button,
+  Text,
+} from "react-native";
+import {
+  createStackNavigator,
+  HeaderBackButton,
+} from "@react-navigation/stack";
 import Recherche from "../components/pages/Recherche";
 import Home from "../components/pages/Home";
 //import HomeScreen from "../App"
@@ -11,7 +22,7 @@ function LogoTitle() {
   return (
     <Image
       style={{ width: 70, height: 70, marginTop: -10 }}
-      source={require('/Users/thomaswalosik/ReactNative/N3CMychimio2/components/images/Logo_PNG.png')}
+      source={require("../assets/Logo_PNG.png")}
     />
   );
 }
@@ -23,36 +34,32 @@ function Navigation() {
         name="Home"
         component={Home}
         options={{
-          headerTitle: props => <LogoTitle {...props} />,          
+          headerTitle: (props) => <LogoTitle {...props} />,
           headerLeft: () => (
             <Button
-              onPress={() => alert('This is a button!')}
+              onPress={() => alert("This is a button!")}
               title="Menu"
               color="#FFFFFF"
             />
           ),
-          headerRight: () => (
-            <Button
-              onPress={() => navigation.navigate("Recherche")}              
-              title="Recherche"
-              color="#FFFFFF"
-            />
-          ),
           headerStyle: {
-            backgroundColor: '#FFAE74',
+            backgroundColor: "#FFAE74",
             //header: props => <GradientHeader {...props} />,
           },
         }}
       />
-      <Stack.Screen 
-        name="Recherche" 
+      <Stack.Screen
+        name="Recherche"
         component={Recherche}
         options={{
-          headerTitle: () => (<Text style={{color: '#FFFFFF'}}>Recherche</Text>),
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>Recherche</Text>
+          ),
           headerStyle: {
-          backgroundColor: '#FFAE74'
-          }
-        }}/>
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -66,15 +73,15 @@ const GradientHeader = props => (
       </LinearGradient>
     </View>
   )*/
-  const styles = StyleSheet.create({
-    containerNav: {
-      backgroundColor: '#FFFFFF',
-      alignItems: 'center',
-    },
-    logo: {
-      width: 10,
-      height: 10
-    }
-  });
+const styles = StyleSheet.create({
+  containerNav: {
+    backgroundColor: "#FFFFFF",
+    alignItems: "center",
+  },
+  logo: {
+    width: 10,
+    height: 10,
+  },
+});
 
 export default Navigation;
