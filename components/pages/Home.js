@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Button, Text, StyleSheet, Alert, TouchableOpacity, ScrollView, TouchableHighlight, Image, TextInput } from "react-native";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import MapView from "react-native-maps";
-
+//import Search from "../boutons/Search"
 
 export default function Home({ navigation }) {
   return (
@@ -12,8 +12,8 @@ export default function Home({ navigation }) {
         <Smiley/>
         <LayoutRappels/>  
         <InformationCancer/>
-        <Search/>
         <MaListeSymp/>
+        <Search/>
         <Map/>
       </View>
     </ScrollView>
@@ -24,8 +24,8 @@ export default function Home({ navigation }) {
       <View style={styles.containerSearch}>
         <TextInput style={{height: 40, backgroundColor: '#F1F1F1', borderColor: '#F3F3F3', borderRadius: 100, borderWidth: 1, paddingLeft: 5 }}
               placeholder=' Recherchez un symtôme, un médicament, ...  '
-                  onChangeText={(text) => {}/*this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}*/}
-                  onSubmitEditing={() => Alert.alert('\'Lancée de la recherche\'')/*this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()*/}
+                  onChangeText={(text) => {}}//this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}}
+                  onSubmitEditing={() => Alert.alert('\'Lancée de la recherche\'')}//this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()}
               >      
         </TextInput>
         <Button
@@ -36,6 +36,7 @@ export default function Home({ navigation }) {
       </View>
     );
   }
+
 /*function Recherche3() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -122,28 +123,28 @@ function InformationCancer(props) {
       <View style={styles.imageSEIN}>
         <TouchableHighlight onPress={() => Alert.alert('Fiche SEIN')}>
           <Image
-            source={require("./images/IMG_3759.jpg")}
+            source={require("../images/IMG_3759.jpg")}
             resizeMode="contain"
             style={styles.imagePEAU}>
           </Image>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => Alert.alert('Fiche PEAU')}>
           <Image
-            source={require("./images/IMG_3760.jpg")}
+            source={require("../images/IMG_3760.jpg")}
             resizeMode="contain"
             style={styles.image4}>
           </Image>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => Alert.alert('Fiche LEUCEMIES')}>
           <Image
-            source={require("./images/IMG_3756.jpg")}
+            source={require("../images/IMG_3756.jpg")}
             resizeMode="contain"
             style={styles.image4}>
           </Image>
         </TouchableHighlight>
         <TouchableHighlight onPress={() => Alert.alert('Fiche PROSTATE')}>
           <Image
-            source={require("./images/IMG_3757.jpg")}
+            source={require("../images/IMG_3757.jpg")}
             resizeMode="contain"
             style={styles.image5}>
           </Image>
@@ -229,7 +230,7 @@ const styles = StyleSheet.create({
   },
   bonjourText: {
     fontSize: 50,
-    color: 'orange',
+    color: '#FFAE74',
     //borderTopWidth: 12,
     borderBottomWidth: 30,
     textAlignVertical: 'center',
