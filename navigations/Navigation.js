@@ -33,7 +33,7 @@ function Navigation() {
           ),
           headerRight: () => (
             <Button
-              onPress={() => alert('This is a button!')}
+              onPress={() => navigation.navigate("Recherche")}              
               title="Recherche"
               color="#FFFFFF"
             />
@@ -44,7 +44,15 @@ function Navigation() {
           },
         }}
       />
-      <Stack.Screen name="Recherche" component={Recherche} />
+      <Stack.Screen 
+        name="Recherche" 
+        component={Recherche}
+        options={{
+          headerTitle: () => (<Text style={{color: '#FFFFFF'}}>Recherche</Text>),
+          headerStyle: {
+          backgroundColor: '#FFAE74'
+          }
+        }}/>
     </Stack.Navigator>
   );
 }

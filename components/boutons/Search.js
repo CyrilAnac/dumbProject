@@ -4,10 +4,10 @@ import { View, Button, Text, StyleSheet, Alert, TouchableOpacity, ScrollView, To
 export default function Search() {
     return (
       <View style={styles.containerSearch}>
-        <TextInput style={{height: 40, backgroundColor: '#F1F1F1', borderColor: '#F3F3F3', borderRadius: 100, borderWidth: 1, paddingLeft: 5 }}
+        <TextInput style={{width: 200, height: 40, backgroundColor: '#F1F1F1', borderColor: '#F3F3F3', borderRadius: 100, borderWidth: 1, paddingLeft: 5 }}
               placeholder=' Recherchez un symtôme, un médicament, ...  '
                   onChangeText={(text) => {}/*this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}*/}
-                  onSubmitEditing={() => Alert.alert('\'Lancée de la recherche\'')/*this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()*/}
+                  onSubmitEditing={() => Alert.alert('\'Lancée 2 la recherche\'')/*this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()*/}
               >      
         </TextInput>
         <Button

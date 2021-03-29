@@ -168,6 +168,10 @@ function MaListeSymp(props) {
 function Map(props) {
   return (
     <View>
+      <View style={{flexDirection: "row", marginTop: 30}}>
+        <Text>Trouver un professionnel</Text>
+        <Text style={{color: 'orange'}}>Voir toute la carte</Text>
+      </View>
       <MapView
         provider={MapView.PROVIDER_GOOGLE}
         initialRegion={{
@@ -297,7 +301,7 @@ const styles = StyleSheet.create({
   group2: {
     width: 324,
     height: 84,
-    alignItems: 'center'
+    alignItems: 'center',
   },
   rect: {
     width: 370,
@@ -413,6 +417,6 @@ const styles = StyleSheet.create({
   mapView: {
     height: 290,
     width: 360,
-    marginTop: 40,
+    marginTop: 8,
   }
 });

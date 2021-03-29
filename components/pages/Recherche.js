@@ -11,6 +11,4 @@ export default function RechercheScreen({ navigation }) {
       
     </View>
   );
-  /*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
-        <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
 }
