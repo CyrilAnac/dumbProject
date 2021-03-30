@@ -2,7 +2,7 @@ import * as React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import Search from "../boutons/Search";
 
-export default function RechercheScreen({ navigation }) {
+export default function Recherche({ navigation }) {
   return (
     <View style={styles.containerRecherche}>
       <Search nav={navigation} />

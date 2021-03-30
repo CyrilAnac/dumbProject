@@ -15,6 +15,7 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import MapView from "react-native-maps";
 import { Icon } from "react-native-elements";
 import Search from "../boutons/Search";
+import Root from "../../navigations/Navigation";
 
 export default function Home({ navigation }) {
   React.useLayoutEffect(() => {
@@ -34,7 +35,7 @@ export default function Home({ navigation }) {
           name="menu"
           color="#FFFFFF"
           containerStyle={{ marginBottom: 10, marginLeft: 10 }}
-          onPress={() => navigation.navigate("Recherche")}
+          onPress={() => navigation.openDrawer()}
         />
       ),
     });
