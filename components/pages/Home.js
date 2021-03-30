@@ -269,6 +269,7 @@ const styles = StyleSheet.create({
     height: 33,
     alignItems: "center",
     marginTop: 10,
+    marginBottom: 20,
   },
   containerMap: {
     width: 100,

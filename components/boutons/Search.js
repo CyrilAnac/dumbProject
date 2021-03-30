@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   containerSearch: {
     width: 300,
     height: 31,
-    marginTop: 45,
+    marginTop: 30,
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center", //vertically center

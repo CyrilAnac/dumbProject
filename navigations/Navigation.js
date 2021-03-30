@@ -17,6 +17,7 @@ import Home from "../components/pages/Home";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import Ordonnance from "../components/pages/Ordonnance";
+import Icon from "react-native-elements";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -30,7 +31,7 @@ function LogoTitle() {
   );
 }
 
-function Root() {
+function RootHome() {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -57,7 +58,7 @@ function Root() {
         }}
       />
       <Stack.Screen name="Drawer" component={MyDrawer} />
-      {/* <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Ordonnance"
         component={Ordonnance}
         options={{
@@ -70,7 +71,28 @@ function Root() {
             backgroundColor: "#FFAE74",
           },
         }}
-      /> */}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function RootOrdonnance() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+        name="Ordonnance"
+        component={Ordonnance}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Mon Ordonnance
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -78,9 +100,10 @@ function Root() {
 function MyDrawer() {
   return (
     <Drawer.Navigator>
-      <Drawer.Screen name="Root" component={Root} />
+      <Drawer.Screen name="Accueil" component={RootHome} />
       <Drawer.Screen name="Informations Personnelle" component={Recherche} />
-      <Drawer.Screen
+      <Drawer.Screen name="Mon Ordonnance" component={RootOrdonnance} />
+      {/*<Drawer.Screen
         name="Mon Ordonnance"
         component={Ordonnance}
         options={{
@@ -95,10 +118,10 @@ function MyDrawer() {
         }}
       />
       {/*et je veux appeler le screen ici pour avoir Onrdonnance.js + son entete*/}
-      <Drawer.Screen name="Espace Bien-être" component={Root} />
-      <Drawer.Screen name="Conditions d'Utilisations" component={Root} />
-      <Drawer.Screen name="Mentions Légales" component={Root} />
-      <Drawer.Screen name="Aide" component={Root} />
+      <Drawer.Screen name="Espace Bien-être" component={RootHome} />
+      <Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
+      <Drawer.Screen name="Mentions Légales" component={RootHome} />
+      <Drawer.Screen name="Aide" component={RootHome} />
     </Drawer.Navigator>
   );
 }
