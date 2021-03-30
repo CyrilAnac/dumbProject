@@ -56,7 +56,8 @@ function Root() {
           },
         }}
       />
-      <Stack.Screen
+      <Stack.Screen name="Drawer" component={MyDrawer} />
+      {/* <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Ordonnance"
         component={Ordonnance}
         options={{
@@ -69,17 +70,31 @@ function Root() {
             backgroundColor: "#FFAE74",
           },
         }}
-      />
+      /> */}
     </Stack.Navigator>
   );
 }
 
-function Navigation() {
+function MyDrawer() {
   return (
     <Drawer.Navigator>
       <Drawer.Screen name="Root" component={Root} />
-      <Drawer.Screen name="Informations Personnelles" component={Root} />
-      <Drawer.Screen name="Mon Ordonnance" component={Root} />
+      <Drawer.Screen name="Informations Personnelle" component={Recherche} />
+      <Drawer.Screen
+        name="Mon Ordonnance"
+        component={Ordonnance}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Mon Ordonnance
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
+      {/*et je veux appeler le screen ici pour avoir Onrdonnance.js + son entete*/}
       <Drawer.Screen name="Espace Bien-être" component={Root} />
       <Drawer.Screen name="Conditions d'Utilisations" component={Root} />
       <Drawer.Screen name="Mentions Légales" component={Root} />
@@ -154,4 +169,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Navigation;
+export default MyDrawer;

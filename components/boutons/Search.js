@@ -25,7 +25,7 @@ export default function Search(props) {
           borderRadius: 100,
           borderWidth: 1,
           paddingLeft: 8,
-          justifyContent: true,
+          justifyContent: "center",
         }}
       >
         <TextInput
