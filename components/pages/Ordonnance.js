@@ -11,7 +11,7 @@ export default function Ordonnance({ navigation }) {
           name="arrow-back"
           color="#FFFFFF"
           containerStyle={{ marginBottom: 10, marginLeft: 10 }}
-          onPress={() => navigation.navigate("Accueil")}
+          onPress={() => navigation.navigate("Home")}
         />
       ),
     });

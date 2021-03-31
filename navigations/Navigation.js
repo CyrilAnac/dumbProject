@@ -1,17 +1,6 @@
 import * as React from "react";
-import {
-  View,
-  LinearGradient,
-  StyleSheet,
-  Header,
-  Image,
-  Button,
-  Text,
-} from "react-native";
-import {
-  createStackNavigator,
-  HeaderBackButton,
-} from "@react-navigation/stack";
+import { View, Image, Text, StyleSheet } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 import Recherche from "../components/pages/Recherche";
 import Home from "../components/pages/Home";
 import {
@@ -28,11 +17,18 @@ import Ordonnance from "../components/pages/Ordonnance";
 import Icon from "react-native-elements";
 import Map from "../components/pages/Map";
 import Rappels from "../components/pages/Rappels";
-import { Alert } from "react-native";
+import { Alert, TouchableOpacity } from "react-native";
 import { enableScreens } from "react-native-screens";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
+
+// Pour l'assignation de la variable "scene" au text du Text
+/*getLabel = {(scene) => (
+                    <View style={styles.button}>
+                      <Text style={styles.buttonText}>{props.getLabel(scene)}</Text>
+                    </View>
+                  )} */
 
 function LogoTitle() {
   return (
@@ -155,16 +151,17 @@ function RootOrdonnance() {
     </Stack.Navigator>
   );
 }
-
+// Utilisable eventuellement pour le ScrollView /!\
+/*
 function CustomDrawerContent(props) {
   return (
     <DrawerContentScrollView {...props}>
-      {/*<DrawerItem
-        label="Informations Personnelles"
-        onPress={() => alert("Clique sur l'item Informations Personnelles")}
-      />*/}
-      <View style={styles.itemDrawer}>
-        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
+    +++++++ section a commenter +++++++++
+      {/* <View style={styles.itemDrawer}>
+        <Text
+          style={{ fontSize: 20 }}
+          onPress={() => props.navigation.navigate("Ordonnance")}
+        >
           Informations Personnelles
         </Text>
         <Image
@@ -172,102 +169,182 @@ function CustomDrawerContent(props) {
           resizeMode="contain"
           style={{ width: 30, height: 40, marginStart: 15 }}
         />
-      </View>
+    </View>
+    +++++++++++++++++++++++++++++++++++++++*}
       <DrawerItemList {...props} />
-      <View style={styles.itemDrawer}>
-        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
-          Conditions d'Utilisations
-        </Text>
-      </View>
-      <View style={styles.itemDrawer}>
-        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
-          Mentions Légales
-        </Text>
-      </View>
-      <View style={styles.itemDrawer}>
-        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
-          Aide
-        </Text>
-      </View>
+
+      <DrawerItem
+        label={"Informations personnelles"} //
+        style={{
+          marginLeft: 0,
+        }}
+        labelStyle={{
+          fontSize: 20,
+          color: "white",
+          borderColor: "#FFAE74",
+          backgroundColor: "#FFAE74",
+          borderWidth: 2,
+          width: 262,
+          height: 50,
+        }}
+        onPress={() => alert("Open Informations Personnelles")} //props.navigation.navigate("Ordonnance")
+      ></DrawerItem>
+
+      <DrawerItem
+        label="Mon Ordonnance"
+        style={{ marginLeft: 0 }}
+        labelStyle={{
+          fontSize: 20,
+          color: "white",
+          borderColor: "rgba(130,130,130,1)",
+          backgroundColor: "rgba(130,130,130,1)",
+          borderWidth: 2,
+          width: 262,
+          height: 50,
+        }}
+        onPress={() => props.navigation.navigate("Ordonnance")}
+      />
+
+      <DrawerItem
+        label="Espace Bien-Être"
+        style={{ marginLeft: 0 }}
+        activeBackgroundColor="rgba(0, 0, 0, .04)"
+        labelStyle={{
+          fontSize: 20,
+          color: "white",
+          borderColor: "rgba(1,198,182,1)",
+          backgroundColor: "rgba(1,198,182,1)",
+          borderWidth: 2,
+          width: 262,
+          height: 50,
+        }}
+        onPress={() => alert("Open Espace Bien-Être")}
+      />
     </DrawerContentScrollView>
   );
 }
 
+
+
+*/
+
 function MyDrawer() {
   return (
-    //drawerContent={() => <DrawerContent />} dans <Drawer.Navigator..ici..>
     <Drawer.Navigator
-      drawerContent={(props) => <CustomDrawerContent {...props} />}
+      //openByDefault ouvrir le drawer menu a l'ouverture de l'appli / pour le premier tuto (présentation de l'app)
+      drawerContentOptions={{
+        labelStyle: {
+          fontSize: 20,
+        },
+      }}
+      //style={styles.itemDrawer}
+      //drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
-      <Drawer.Screen name="Accueil" component={RootHome} />
-      {/*<Drawer.Screen name="Mon Ordonnance" component={RootOrdonnance} />*/}
-      {/*<Drawer.Screen
+      <Drawer.Screen
+        name="Accueil" //
+        component={RootHome}
+        /*options={{
+          drawerIcon: ({ focused, size }) => (
+            <View
+              style={{
+                width: 260,
+                height: 30,
+                alignItems: "center",
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 20, color: "black" }}>Accueil</Text>
+            </View>
+          ),
+        }}*/
+      />
+      <Drawer.Screen
+        name="Informations Personnelles"
+        component={RootHome}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <View
+              style={{
+                backgroundColor: "#FFAE74",
+                width: 260,
+                height: 60,
+                borderWidth: 2,
+                borderColor: "black",
+                borderRadius: 12,
+                alignItems: "center",
+                marginLeft: -8,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
+                Informations Personnelles
+              </Text>
+              {
+                <Image
+                  source={require("../assets/arrow.png")}
+                  style={{ height: 17.78, width: 16, marginLeft: 10 }}
+                />
+              }
+            </View>
+          ),
+        }}
+      />
+      <Drawer.Screen
         name="Mon Ordonnance"
-        component={Ordonnance}
+        component={RootOrdonnance}
         options={{
-          headerTitle: () => (
-            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
-              Mon Ordonnance
-            </Text>
+          drawerIcon: ({ focused, size }) => (
+            <View
+              style={{
+                backgroundColor: "#FFAE74",
+                width: 260,
+                height: 60,
+                borderWidth: 2,
+                borderColor: "black",
+                borderRadius: 12,
+                alignItems: "center",
+                marginLeft: -8,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
+                Mon Ordonnance
+              </Text>
+            </View>
           ),
-          headerStyle: {
-            backgroundColor: "#FFAE74",
-          },
         }}
       />
-      {/*et je veux appeler le screen ici pour avoir Onrdonnance.js + son entete*/}
-      <Drawer.Screen name="Espace Bien-être" component={RootHome} />
-      {/*<Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
+      <Drawer.Screen
+        name="Espace Bien-Être"
+        component={RootHome}
+        options={{
+          drawerIcon: ({ focused, size }) => (
+            <View
+              style={{
+                backgroundColor: "#FFAE74",
+                width: 260,
+                height: 60,
+                borderWidth: 2,
+                borderColor: "black",
+                borderRadius: 12,
+                alignItems: "center",
+                marginLeft: -8,
+                flexDirection: "row",
+              }}
+            >
+              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
+                Espace Bien-Être
+              </Text>
+            </View>
+          ),
+        }}
+      />
+      <Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
       <Drawer.Screen name="Mentions Légales" component={RootHome} />
-      <Drawer.Screen name="Aide" component={RootHome} />*/}
+      <Drawer.Screen name="Aide" component={RootHome} />
     </Drawer.Navigator>
   );
 }
-/*
-function Navigation() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{
-          headerTitle: (props) => <LogoTitle {...props} />,
-          headerStyle: {
-            backgroundColor: "#FFAE74",
-            //header: props => <GradientHeader {...props} />,
-          },
-        }}
-      />
-      <Stack.Screen
-        name="Recherche"
-        component={Recherche}
-        options={{
-          headerTitle: () => (
-            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>Recherche</Text>
-          ),
-          headerStyle: {
-            backgroundColor: "#FFAE74",
-          },
-        }}
-      />
-    </Stack.Navigator>
-  );
-}
-
-const DrawerNavigator = () => {
-  return (
-    <Drawer.Navigator>
-      <Drawer.Screen name="Home" component={Home} />
-      <Drawer.Screen name="Informations Personnelles" component={Home} />
-      <Drawer.Screen name="Mon Ordonnance" component={Recherche} />
-      <Drawer.Screen name="Espace Bien-être" component={Recherche} />
-      <Drawer.Screen name="Conditions d'Utilisations" component={Recherche} />
-      <Drawer.Screen name="Mentions Légales" component={Recherche} />
-      <Drawer.Screen name="Aide" component={Recherche} />
-    </Drawer.Navigator>
-  );
-};
-*/
 
 /* TODO Gradiant toolbar 
 const GradientHeader = props => (
@@ -284,15 +361,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
     alignItems: "center",
   },
-  logo: {
-    width: 10,
-    height: 10,
-  },
   itemDrawer: {
     backgroundColor: "white",
     height: 40,
     flexDirection: "row",
-    marginStart: 20,
+    marginStart: 10,
     alignItems: "center",
   },
 });

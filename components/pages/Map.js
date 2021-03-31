@@ -21,6 +21,10 @@ export default function Map({ navigation }) {
   }, [navigation]);
   return (
     <View style={styles.container}>
+      <View style={{ position: "absolute", zIndex: 5, alignSelf: "center" }}>
+        <Search />
+      </View>
+
       <MapView
         provider={MapView.PROVIDER_MAPVIEW} //PROVIDER_GOOGLE
         showsUserLocation="true" //https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md
@@ -28,18 +32,17 @@ export default function Map({ navigation }) {
         initialRegion={{
           latitude: 43.6,
           longitude: 1.433333,
-          latitudeDelta: 0.0922,
-          longitudeDelta: 0.0421,
+          latitudeDelta: 0.109,
+          longitudeDelta: 0.109,
         }}
         customMapStyle={[]}
-        style={{ marginTop: 8, padding: "100%" }}
+        style={{ flex: 1 }} //marginTop: 15, padding: "100%"
       >
         <MapView.Marker
           coordinate={{ latitude: 43.6, longitude: 1.433333 }}
           title={"Dr BLANCHARD Jean-L."}
           description={"Cancérologue"}
         />
-        <Search />
         {/*Voir pour mettre le composant externe Search au centre en haut de la carte/s'affiche une fois sur 2 au centre*/}
         {/*modifier les composants text dans barre de recherche et le bouton rechercher avec fond blanc */}
       </MapView>
@@ -49,9 +52,8 @@ export default function Map({ navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#FFFFFF",
-    alignItems: "center",
     flex: 1,
-    justifyContent: "center",
   },
 });
+
+//zIndex : 5

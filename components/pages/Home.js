@@ -13,7 +13,7 @@ import {
 } from "react-native";
 import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import MapView from "react-native-maps";
-import { Icon } from "react-native-elements";
+import { Icon } from "react-native-elements"; //voir overlay pour popup
 import Search from "../boutons/Search";
 import Rappels from "./Rappels";
 
@@ -193,9 +193,11 @@ export default function Home({ navigation }) {
       <View style={{ marginBottom: 40 }}>
         <View style={{ flexDirection: "row", marginTop: 34 }}>
           <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>
-          <Text style={{ color: "orange", marginLeft: 85, fontSize: 17 }}>
-            Voir toute la carte
-          </Text>
+          <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+            <Text style={{ color: "orange", marginLeft: 85, fontSize: 17 }}>
+              Voir toute la carte
+            </Text>
+          </TouchableOpacity>
         </View>
         <View
           style={{
@@ -210,17 +212,21 @@ export default function Home({ navigation }) {
             elevation: 5, //android
           }}
         >
-          <MapView
-            provider={MapView.PROVIDER_GOOGLE}
-            initialRegion={{
-              latitude: 43.6044622,
-              longitude: 2.4442469,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            customMapStyle={[]}
-            style={{ height: 290, width: 360, marginTop: 8 }}
-          ></MapView>
+          <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+            <MapView
+              provider={MapView.PROVIDER_MAPVIEW}
+              showsUserLocation="true" //https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md
+              //followsUserLocation="true" //pour se concentrer sur l'emplacement de l'utilisateur
+              initialRegion={{
+                latitude: 43.6,
+                longitude: 1.433333,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+              customMapStyle={[]}
+              style={{ height: 290, width: 360, marginTop: 8 }}
+            ></MapView>
+          </TouchableOpacity>
         </View>
       </View>
     );

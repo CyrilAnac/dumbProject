@@ -12,13 +12,14 @@ import {
   Image,
   TextInput,
 } from "react-native";
+import { Icon } from "react-native-elements";
 
 export default function Search(props) {
   return (
     <View style={styles.containerSearch}>
       <View
         style={{
-          width: 270,
+          width: 324,
           height: 40,
           backgroundColor: "#F1F1F1",
           borderColor: "#F3F3F3",
@@ -29,8 +30,8 @@ export default function Search(props) {
         }}
       >
         <TextInput
-          style={{ fontStyle: "italic" }}
-          placeholder=" Recherchez un symtôme, un médicaments...  "
+          style={{ fontStyle: "italic", marginLeft: 2 }}
+          placeholder=" Recherchez un symtôme, un médicament, un molécule "
           onChangeText={(
             text
           ) => {}} /*this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}*/
@@ -42,13 +43,24 @@ export default function Search(props) {
           }
         ></TextInput>
       </View>
-      <Button
+      {/*<Button
         title="Rechercher"
         color="#ff5c5c"
+        position="relative"
         onPress={() => props.nav.navigate("Recherche")}
       >
         Recherche
-      </Button>
+      </Button>*/}
+      <Icon
+        size={34}
+        name="search"
+        color="orange"
+        containerStyle={{
+          justifyContent: "center",
+          marginLeft: 8,
+        }}
+        onPress={() => props.nav.navigate("Recherche")}
+      />
     </View>
   );
 }
@@ -57,6 +69,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 31,
     marginTop: 30,
+    position: "relative",
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "center", //vertically center
