@@ -14,10 +14,22 @@ import {
 } from "@react-navigation/stack";
 import Recherche from "../components/pages/Recherche";
 import Home from "../components/pages/Home";
-import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  createDrawerNavigator,
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerItem,
+} from "@react-navigation/drawer";
+import {
+  NavigationContainer,
+  NavigationContext,
+} from "@react-navigation/native";
 import Ordonnance from "../components/pages/Ordonnance";
 import Icon from "react-native-elements";
+import Map from "../components/pages/Map";
+import Rappels from "../components/pages/Rappels";
+import { Alert } from "react-native";
+import { enableScreens } from "react-native-screens";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -72,6 +84,53 @@ function RootHome() {
           },
         }}
       />
+      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+        name="Map"
+        component={Map}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Trouver un professionnel
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
+      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+        name="Rappels"
+        component={Rappels}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>Mes Rappels</Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function RootMap() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Map"
+        component={Map}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Trouver un professionnel
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 }
@@ -97,12 +156,51 @@ function RootOrdonnance() {
   );
 }
 
+function CustomDrawerContent(props) {
+  return (
+    <DrawerContentScrollView {...props}>
+      {/*<DrawerItem
+        label="Informations Personnelles"
+        onPress={() => alert("Clique sur l'item Informations Personnelles")}
+      />*/}
+      <View style={styles.itemDrawer}>
+        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
+          Informations Personnelles
+        </Text>
+        <Image
+          source={require("../assets/IMG_3759.jpg")}
+          resizeMode="contain"
+          style={{ width: 30, height: 40, marginStart: 15 }}
+        />
+      </View>
+      <DrawerItemList {...props} />
+      <View style={styles.itemDrawer}>
+        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
+          Conditions d'Utilisations
+        </Text>
+      </View>
+      <View style={styles.itemDrawer}>
+        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
+          Mentions Légales
+        </Text>
+      </View>
+      <View style={styles.itemDrawer}>
+        <Text style={{ fontSize: 20 }} onPress={() => alert("coucou")}>
+          Aide
+        </Text>
+      </View>
+    </DrawerContentScrollView>
+  );
+}
+
 function MyDrawer() {
   return (
-    <Drawer.Navigator>
+    //drawerContent={() => <DrawerContent />} dans <Drawer.Navigator..ici..>
+    <Drawer.Navigator
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
+    >
       <Drawer.Screen name="Accueil" component={RootHome} />
-      <Drawer.Screen name="Informations Personnelle" component={Recherche} />
-      <Drawer.Screen name="Mon Ordonnance" component={RootOrdonnance} />
+      {/*<Drawer.Screen name="Mon Ordonnance" component={RootOrdonnance} />*/}
       {/*<Drawer.Screen
         name="Mon Ordonnance"
         component={Ordonnance}
@@ -119,9 +217,9 @@ function MyDrawer() {
       />
       {/*et je veux appeler le screen ici pour avoir Onrdonnance.js + son entete*/}
       <Drawer.Screen name="Espace Bien-être" component={RootHome} />
-      <Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
+      {/*<Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
       <Drawer.Screen name="Mentions Légales" component={RootHome} />
-      <Drawer.Screen name="Aide" component={RootHome} />
+      <Drawer.Screen name="Aide" component={RootHome} />*/}
     </Drawer.Navigator>
   );
 }
@@ -189,6 +287,13 @@ const styles = StyleSheet.create({
   logo: {
     width: 10,
     height: 10,
+  },
+  itemDrawer: {
+    backgroundColor: "white",
+    height: 40,
+    flexDirection: "row",
+    marginStart: 20,
+    alignItems: "center",
   },
 });
 

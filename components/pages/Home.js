@@ -15,6 +15,7 @@ import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommun
 import MapView from "react-native-maps";
 import { Icon } from "react-native-elements";
 import Search from "../boutons/Search";
+import Rappels from "./Rappels";
 
 export default function Home({ navigation }) {
   React.useLayoutEffect(() => {
@@ -49,7 +50,7 @@ export default function Home({ navigation }) {
         <InformationCancer />
         <MaListeSymp />
         <Search nav={navigation} />
-        <Map />
+        <Map nav={navigation} />
       </View>
     </ScrollView>
   );
@@ -63,33 +64,34 @@ export default function Home({ navigation }) {
           </Text>
         </View>
         <View style={styles.group4}>
-          <MaterialCommunityIconsIcon
-            name="emoticon"
+          <Icon
+            name="emoji-emotions"
+            size={48}
+            color="rgba(2,196,13,1)"
             onPress={() => Alert.alert("'Smiley Vert' pressed")}
-            style={styles.icon}
-          ></MaterialCommunityIconsIcon>
-
-          <MaterialCommunityIconsIcon
-            name="emoticon-happy"
+            style={styles.icon3}
+          />
+          <Icon
+            name="sentiment-satisfied"
+            size={48}
+            color="rgba(242,233,3,1)"
             onPress={() => Alert.alert("'Smiley Jaune' pressed")}
-            style={styles.icon2}
-          ></MaterialCommunityIconsIcon>
-
-          <MaterialCommunityIconsIcon
-            name="emoticon-neutral"
+            style={styles.icon3}
+          />
+          <Icon
+            name="sentiment-neutral"
+            size={48}
+            color="orange"
             onPress={() => Alert.alert("'Smiley Orange' pressed")}
             style={styles.icon3}
-          ></MaterialCommunityIconsIcon>
-
-          <View style={styles.groupUrgence}>
-            <MaterialCommunityIconsIcon
-              name="emoticon-devil"
-              onPress={() => Alert.alert("'Smiley Urgence' pressed")}
-              style={styles.iconUrgence}
-            ></MaterialCommunityIconsIcon>
-
-            <Text style={styles.uneUrgence}>Une urgence ?</Text>
-          </View>
+          />
+          <Icon
+            name="sick"
+            size={48}
+            color="rgba(7,174,232,1)"
+            onPress={() => Alert.alert("'Smiley Sick' pressed")}
+            style={styles.icon3}
+          />
         </View>
       </View>
     );
@@ -97,7 +99,7 @@ export default function Home({ navigation }) {
   function LayoutRappels(_props) {
     return (
       <TouchableOpacity
-        onPress={() => Alert.alert("'LayoutRappel' pressed")}
+        onPress={() => navigation.navigate("Rappels")}
         style={styles.containerRappels}
       >
         <View style={styles.group2}>
@@ -134,7 +136,8 @@ export default function Home({ navigation }) {
         </View>
         <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
           <View style={styles.imagesInfoCancer}>
-            <TouchableHighlight onPress={() => Alert.alert("Fiche SEIN")}>
+            <TouchableHighlight onPress={() => navigation.navigate("Map")}>
+              {/*onPress={() => Alert.alert("Fiche SEIN")} */}
               <Image
                 source={require("../../assets/IMG_3759.jpg")}
                 resizeMode="contain"
@@ -186,6 +189,7 @@ export default function Home({ navigation }) {
 
   function Map(props) {
     return (
+      //onPress={navigation.navigate("Map")} TODO ajouter un onPress pour acceder a la page Map
       <View style={{ marginBottom: 40 }}>
         <View style={{ flexDirection: "row", marginTop: 34 }}>
           <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>
@@ -296,9 +300,8 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   group4: {
-    width: 250,
-    height: 50,
     flexDirection: "row",
+    justifyContent: "center",
     //alignContent: 'center',
     marginLeft: -32, //car j'arrive pas a placer le groupe des 4 smileys au centre vertical
     //alignSelf: 'center'
