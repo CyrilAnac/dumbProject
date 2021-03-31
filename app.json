@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "dumbProject",
-    "slug": "dumbProject",
+    "name": "N3CMyChimio",
+    "slug": "N3CMyChimio",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Appli_Logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Appli_Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
