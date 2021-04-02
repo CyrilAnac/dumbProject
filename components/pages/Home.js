@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { Component } from "react";
 import {
   View,
   Button,
@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   ScrollView,
   TouchableHighlight,
+  Switch,
   Image,
   TextInput,
 } from "react-native";
@@ -16,6 +17,7 @@ import MapView from "react-native-maps";
 import { Icon } from "react-native-elements"; //voir overlay pour popup
 import Search from "../boutons/Search";
 import Rappels from "./Rappels";
+//import ConditionsU from "../popups/ConditionsU";
 
 export default function Home({ navigation }) {
   React.useLayoutEffect(() => {
@@ -47,193 +49,193 @@ export default function Home({ navigation }) {
         <Text style={styles.bonjourText}>Bonjour Johanna !</Text>
         <Smiley />
         <LayoutRappels />
-        <InformationCancer />
+        <InformationCancer nav={navigation} />
         <MaListeSymp />
         <Search nav={navigation} />
         <Map nav={navigation} />
       </View>
     </ScrollView>
   );
+}
 
-  function Smiley(props) {
-    return (
-      <View style={styles.containerSmiley}>
-        <View>
-          <Text style={styles.loremIpsum4}>
-            Comment te sens-tu aujourd&#39;hui ?
-          </Text>
-        </View>
-        <View style={styles.group4}>
-          <Icon
-            name="emoji-emotions"
-            size={48}
-            color="rgba(2,196,13,1)"
-            onPress={() => Alert.alert("'Smiley Vert' pressed")}
-            style={styles.icon3}
-          />
-          <Icon
-            name="sentiment-satisfied"
-            size={48}
-            color="rgba(242,233,3,1)"
-            onPress={() => Alert.alert("'Smiley Jaune' pressed")}
-            style={styles.icon3}
-          />
-          <Icon
-            name="sentiment-neutral"
-            size={48}
-            color="orange"
-            onPress={() => Alert.alert("'Smiley Orange' pressed")}
-            style={styles.icon3}
-          />
-          <Icon
-            name="sick"
-            size={48}
-            color="rgba(7,174,232,1)"
-            onPress={() => Alert.alert("'Smiley Sick' pressed")}
-            style={styles.icon3}
-          />
-        </View>
+function Smiley(props) {
+  return (
+    <View style={styles.containerSmiley}>
+      <View>
+        <Text style={styles.loremIpsum4}>
+          Comment te sens-tu aujourd&#39;hui ?
+        </Text>
       </View>
-    );
-  }
-  function LayoutRappels(_props) {
-    return (
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Rappels")}
-        style={styles.containerRappels}
-      >
-        <View style={styles.group2}>
-          <View style={styles.rect}>
-            <View style={styles.groupRow}>
-              <View style={styles.group}>
-                <View style={styles.loremIpsum2Stack}>
-                  <Text style={styles.numJour}>12</Text>
-                  <Text style={styles.leJour}>SAM.</Text>
-                </View>
+      <View style={styles.group4}>
+        <Icon
+          name="emoji-emotions"
+          size={48}
+          color="rgba(2,196,13,1)"
+          onPress={() => Alert.alert("'Smiley Vert' pressed")}
+          style={styles.icon3}
+        />
+        <Icon
+          name="sentiment-satisfied"
+          size={48}
+          color="rgba(242,233,3,1)"
+          onPress={() => Alert.alert("'Smiley Jaune' pressed")}
+          style={styles.icon3}
+        />
+        <Icon
+          name="sentiment-neutral"
+          size={48}
+          color="orange"
+          onPress={() => Alert.alert("'Smiley Orange' pressed")}
+          style={styles.icon3}
+        />
+        <Icon
+          name="sick"
+          size={48}
+          color="rgba(7,174,232,1)"
+          onPress={() => Alert.alert("'Smiley Sick' pressed")}
+          style={styles.icon3}
+        />
+      </View>
+    </View>
+  );
+}
+function LayoutRappels(_props) {
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate("Rappels")}
+      style={styles.containerRappels}
+    >
+      <View style={styles.group2}>
+        <View style={styles.rect}>
+          <View style={styles.groupRow}>
+            <View style={styles.group}>
+              <View style={styles.loremIpsum2Stack}>
+                <Text style={styles.numJour}>12</Text>
+                <Text style={styles.leJour}>SAM.</Text>
               </View>
-              <View style={styles.evenementAVenirColumn}>
-                <Text style={styles.evenementAVenir}>Évenement à venir :</Text>
-                <Text style={styles.evenementAVenir1}>
-                  Rendez-vous chez mon médecin traitant
-                </Text>
+            </View>
+            <View style={styles.evenementAVenirColumn}>
+              <Text style={styles.evenementAVenir}>Évenement à venir :</Text>
+              <Text style={styles.evenementAVenir1}>
+                Rendez-vous chez mon médecin traitant
+              </Text>
 
-                <Text style={styles.prevuLe20032021}>Prévu le 20/03/2021</Text>
-              </View>
+              <Text style={styles.prevuLe20032021}>Prévu le 20/03/2021</Text>
             </View>
           </View>
         </View>
-      </TouchableOpacity>
-    );
-  }
-
-  function InformationCancer(props) {
-    return (
-      <View style={styles.containerInfoCancer}>
-        <View>
-          <Text style={{ fontSize: 17, marginBottom: 8, marginLeft: 25 }}>
-            Apprendre et agir
-          </Text>
-        </View>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <View style={styles.imagesInfoCancer}>
-            <TouchableHighlight onPress={() => navigation.navigate("Map")}>
-              {/*onPress={() => Alert.alert("Fiche SEIN")} */}
-              <Image
-                source={require("../../assets/IMG_3759.jpg")}
-                resizeMode="contain"
-                style={styles.imageInfoCancer}
-              />
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => Alert.alert("Fiche PEAU")}>
-              <Image
-                source={require("../../assets/IMG_3760.jpg")}
-                resizeMode="contain"
-                style={styles.imageInfoCancer}
-              />
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => Alert.alert("Fiche LEUCEMIES")}>
-              <Image
-                source={require("../../assets/IMG_3756.jpg")}
-                resizeMode="contain"
-                style={styles.imageInfoCancer}
-              ></Image>
-            </TouchableHighlight>
-            <TouchableHighlight onPress={() => Alert.alert("Fiche PROSTATE")}>
-              <Image
-                source={require("../../assets/IMG_3757.jpg")}
-                resizeMode="contain"
-                style={styles.imageInfoCancer}
-              ></Image>
-            </TouchableHighlight>
-          </View>
-        </ScrollView>
       </View>
-    );
-  }
-
-  function MaListeSymp(props) {
-    return (
-      //onclick={() => Alert.alert('Simple Button pressed')}
-      <View style={styles.containerMaListeSymp}>
-        <View style={styles.rectMaListeSymp}>
-          <Text
-            onPress={() => Alert.alert("'Ma liste de symptômes' pressed")}
-            style={styles.textMaListeSymp}
-          >
-            Ma liste de symptômes
-          </Text>
-        </View>
-      </View>
-    );
-  }
-
-  function Map(props) {
-    return (
-      //onPress={navigation.navigate("Map")} TODO ajouter un onPress pour acceder a la page Map
-      <View style={{ marginBottom: 40 }}>
-        <View style={{ flexDirection: "row", marginTop: 34 }}>
-          <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Map")}>
-            <Text style={{ color: "orange", marginLeft: 85, fontSize: 17 }}>
-              Voir toute la carte
-            </Text>
-          </TouchableOpacity>
-        </View>
-        <View
-          style={{
-            shadowColor: "#000", // ios
-            shadowOffset: {
-              width: 0,
-              height: 2,
-            },
-            shadowOpacity: 0.25,
-            shadowRadius: 3.84,
-
-            elevation: 5, //android
-          }}
-        >
-          <TouchableOpacity onPress={() => navigation.navigate("Map")}>
-            <MapView
-              provider={MapView.PROVIDER_MAPVIEW}
-              showsUserLocation="true" //https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md
-              //followsUserLocation="true" //pour se concentrer sur l'emplacement de l'utilisateur
-              initialRegion={{
-                latitude: 43.6,
-                longitude: 1.433333,
-                latitudeDelta: 0.0922,
-                longitudeDelta: 0.0421,
-              }}
-              customMapStyle={[]}
-              style={{ height: 290, width: 360, marginTop: 8 }}
-            ></MapView>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
-  /*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
-        <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
+    </TouchableOpacity>
+  );
 }
+
+function InformationCancer(props) {
+  return (
+    <View style={styles.containerInfoCancer}>
+      <View>
+        <Text style={{ fontSize: 17, marginBottom: 8, marginLeft: 25 }}>
+          Apprendre et agir
+        </Text>
+      </View>
+      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+        <View style={styles.imagesInfoCancer}>
+          <TouchableHighlight onPress={() => props.navigation.navigate("Map")}>
+            {/*onPress={() => Alert.alert("Fiche SEIN")} */}
+            <Image
+              source={require("../../assets/IMG_3759.jpg")}
+              resizeMode="contain"
+              style={styles.imageInfoCancer}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => Alert.alert("Fiche PEAU")}>
+            <Image
+              source={require("../../assets/IMG_3760.jpg")}
+              resizeMode="contain"
+              style={styles.imageInfoCancer}
+            />
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => Alert.alert("Fiche LEUCEMIES")}>
+            <Image
+              source={require("../../assets/IMG_3756.jpg")}
+              resizeMode="contain"
+              style={styles.imageInfoCancer}
+            ></Image>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => Alert.alert("Fiche PROSTATE")}>
+            <Image
+              source={require("../../assets/IMG_3757.jpg")}
+              resizeMode="contain"
+              style={styles.imageInfoCancer}
+            ></Image>
+          </TouchableHighlight>
+        </View>
+      </ScrollView>
+    </View>
+  );
+}
+
+function MaListeSymp(props) {
+  return (
+    //onclick={() => Alert.alert('Simple Button pressed')}
+    <View style={styles.containerMaListeSymp}>
+      <View style={styles.rectMaListeSymp}>
+        <Text
+          onPress={() => Alert.alert("'Ma liste de symptômes' pressed")}
+          style={styles.textMaListeSymp}
+        >
+          Ma liste de symptômes
+        </Text>
+      </View>
+    </View>
+  );
+}
+
+function Map(props) {
+  return (
+    //onPress={navigation.navigate("Map")} TODO ajouter un onPress pour acceder a la page Map
+    <View style={{ marginBottom: 40 }}>
+      <View style={{ flexDirection: "row", marginTop: 34 }}>
+        <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+          <Text style={{ color: "orange", marginLeft: 85, fontSize: 17 }}>
+            Voir toute la carte
+          </Text>
+        </TouchableOpacity>
+      </View>
+      <View
+        style={{
+          shadowColor: "#000", // ios
+          shadowOffset: {
+            width: 0,
+            height: 2,
+          },
+          shadowOpacity: 0.25,
+          shadowRadius: 3.84,
+
+          elevation: 5, //android
+        }}
+      >
+        <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+          <MapView
+            provider={MapView.PROVIDER_MAPVIEW}
+            showsUserLocation="true" //https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md
+            //followsUserLocation="true" //pour se concentrer sur l'emplacement de l'utilisateur
+            initialRegion={{
+              latitude: 43.6,
+              longitude: 1.433333,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            customMapStyle={[]}
+            style={{ height: 290, width: 360, marginTop: 8 }}
+          ></MapView>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
+}
+/*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
+        <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
 
 const styles = StyleSheet.create({
   containerHome: {

@@ -1,4 +1,3 @@
-import * as React from "react";
 import { View, Image, Text, StyleSheet } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Recherche from "../components/pages/Recherche";
@@ -14,11 +13,13 @@ import {
   NavigationContext,
 } from "@react-navigation/native";
 import Ordonnance from "../components/pages/Ordonnance";
-import Icon from "react-native-elements";
+import { Icon, Overlay } from "react-native-elements";
 import Map from "../components/pages/Map";
 import Rappels from "../components/pages/Rappels";
-import { Alert, TouchableOpacity } from "react-native";
+import { Alert, TouchableOpacity, Button } from "react-native";
 import { enableScreens } from "react-native-screens";
+import React, { Children, useState } from "react";
+import ConditionsU from "../components/popups/ConditionsU";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -227,6 +228,14 @@ function CustomDrawerContent(props) {
 
 
 */
+function ChildrenList(props) {
+  return (
+    <View>
+      <Text style={{ color: "#111111", fontSize: 20 }}>Recherche</Text>
+      <Text style={{ color: "#111111", fontSize: 20 }}>Recherche</Text>
+    </View>
+  );
+}
 
 function MyDrawer() {
   return (
@@ -239,6 +248,7 @@ function MyDrawer() {
       }}
       //style={styles.itemDrawer}
       //drawerContent={(props) => <CustomDrawerContent {...props} />}
+      headerMode="none"
     >
       <Drawer.Screen
         name="Accueil" //
@@ -259,8 +269,8 @@ function MyDrawer() {
         }}*/
       />
       <Drawer.Screen
-        name="Informations Personnelles"
-        component={RootHome}
+        name="Mes Informations"
+        component={ChildrenList}
         options={{
           drawerIcon: ({ focused, size }) => (
             <View
@@ -276,15 +286,9 @@ function MyDrawer() {
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
-                Informations Personnelles
+              <Text style={{ fontSize: 20, color: "white", marginLeft: 10 }}>
+                Mes Informations
               </Text>
-              {
-                <Image
-                  source={require("../assets/arrow.png")}
-                  style={{ height: 17.78, width: 16, marginLeft: 10 }}
-                />
-              }
             </View>
           ),
         }}
@@ -339,7 +343,7 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="Conditions d'Utilisations" component={RootHome} />
+      <Drawer.Screen name="Conditions d'Utilisations" component={ConditionsU} />
       <Drawer.Screen name="Mentions Légales" component={RootHome} />
       <Drawer.Screen name="Aide" component={RootHome} />
     </Drawer.Navigator>
