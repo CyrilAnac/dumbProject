@@ -20,10 +20,10 @@ function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Accueil" component={Navigation} />
-        <Drawer.Screen
+        {/*<Drawer.Screen
           name="Informations Personnelles"
           component={Navigation}
-        />
+        />*/}
         <Drawer.Screen name="Mon Ordonnance" component={Recherche} />
         <Drawer.Screen name="Espace Bien-être" component={Recherche} />
         <Drawer.Screen name="Conditions d'Utilisations" component={Recherche} />

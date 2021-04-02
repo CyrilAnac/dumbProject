@@ -20,6 +20,7 @@ import { Alert, TouchableOpacity, Button } from "react-native";
 import { enableScreens } from "react-native-screens";
 import React, { Children, useState } from "react";
 import ConditionsU from "../components/popups/ConditionsU";
+import MesInformations from "../components/pages/MesInformations";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -67,20 +68,20 @@ function RootHome() {
         }}
       />
       <Stack.Screen name="Drawer" component={MyDrawer} />
-      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+      {/*<Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Ordonnance"
         component={Ordonnance}
         options={{
           headerTitle: () => (
             <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
-              Mon Ordonnance
+              Mon OrdonnanceR
             </Text>
           ),
           headerStyle: {
             backgroundColor: "#FFAE74",
           },
         }}
-      />
+      />*/}
       <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Map"
         component={Map}
@@ -152,88 +153,25 @@ function RootOrdonnance() {
     </Stack.Navigator>
   );
 }
-// Utilisable eventuellement pour le ScrollView /!\
-/*
-function CustomDrawerContent(props) {
+
+function RootMesInformations() {
   return (
-    <DrawerContentScrollView {...props}>
-    +++++++ section a commenter +++++++++
-      {/* <View style={styles.itemDrawer}>
-        <Text
-          style={{ fontSize: 20 }}
-          onPress={() => props.navigation.navigate("Ordonnance")}
-        >
-          Informations Personnelles
-        </Text>
-        <Image
-          source={require("../assets/IMG_3759.jpg")}
-          resizeMode="contain"
-          style={{ width: 30, height: 40, marginStart: 15 }}
-        />
-    </View>
-    +++++++++++++++++++++++++++++++++++++++*}
-      <DrawerItemList {...props} />
-
-      <DrawerItem
-        label={"Informations personnelles"} //
-        style={{
-          marginLeft: 0,
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Mes Informations"
+        component={MesInformations}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Mes Informations
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
         }}
-        labelStyle={{
-          fontSize: 20,
-          color: "white",
-          borderColor: "#FFAE74",
-          backgroundColor: "#FFAE74",
-          borderWidth: 2,
-          width: 262,
-          height: 50,
-        }}
-        onPress={() => alert("Open Informations Personnelles")} //props.navigation.navigate("Ordonnance")
-      ></DrawerItem>
-
-      <DrawerItem
-        label="Mon Ordonnance"
-        style={{ marginLeft: 0 }}
-        labelStyle={{
-          fontSize: 20,
-          color: "white",
-          borderColor: "rgba(130,130,130,1)",
-          backgroundColor: "rgba(130,130,130,1)",
-          borderWidth: 2,
-          width: 262,
-          height: 50,
-        }}
-        onPress={() => props.navigation.navigate("Ordonnance")}
       />
-
-      <DrawerItem
-        label="Espace Bien-Être"
-        style={{ marginLeft: 0 }}
-        activeBackgroundColor="rgba(0, 0, 0, .04)"
-        labelStyle={{
-          fontSize: 20,
-          color: "white",
-          borderColor: "rgba(1,198,182,1)",
-          backgroundColor: "rgba(1,198,182,1)",
-          borderWidth: 2,
-          width: 262,
-          height: 50,
-        }}
-        onPress={() => alert("Open Espace Bien-Être")}
-      />
-    </DrawerContentScrollView>
-  );
-}
-
-
-
-*/
-function ChildrenList(props) {
-  return (
-    <View>
-      <Text style={{ color: "#111111", fontSize: 20 }}>Recherche</Text>
-      <Text style={{ color: "#111111", fontSize: 20 }}>Recherche</Text>
-    </View>
+    </Stack.Navigator>
   );
 }
 
@@ -270,7 +208,7 @@ function MyDrawer() {
       />
       <Drawer.Screen
         name="Mes Informations"
-        component={ChildrenList}
+        component={RootMesInformations}
         options={{
           drawerIcon: ({ focused, size }) => (
             <View
@@ -279,14 +217,26 @@ function MyDrawer() {
                 width: 260,
                 height: 60,
                 borderWidth: 2,
-                borderColor: "black",
+                borderColor: "#D66705",
                 borderRadius: 12,
                 alignItems: "center",
                 marginLeft: -8,
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 20, color: "white", marginLeft: 10 }}>
+              {
+                <Icon
+                  name="account-circle"
+                  size={34}
+                  color="white"
+                  containerStyle={{
+                    justifyContent: "center",
+                    marginLeft: 10,
+                  }}
+                  onPress={() => props.nav.navigate("Profil")}
+                />
+              }
+              <Text style={{ fontSize: 21, color: "white", marginLeft: 10 }}>
                 Mes Informations
               </Text>
             </View>
@@ -300,18 +250,30 @@ function MyDrawer() {
           drawerIcon: ({ focused, size }) => (
             <View
               style={{
-                backgroundColor: "#FFAE74",
+                backgroundColor: "#47D78B",
                 width: 260,
                 height: 60,
                 borderWidth: 2,
-                borderColor: "black",
+                borderColor: "#15A458",
                 borderRadius: 12,
                 alignItems: "center",
                 marginLeft: -8,
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
+              {
+                <Icon
+                  name="local-hospital" //self_improvement
+                  size={34}
+                  color="white"
+                  containerStyle={{
+                    justifyContent: "center",
+                    marginLeft: 10,
+                  }}
+                  onPress={() => props.nav.navigate("Profil")}
+                />
+              }
+              <Text style={{ fontSize: 21, color: "white", marginLeft: 10 }}>
                 Mon Ordonnance
               </Text>
             </View>
@@ -325,18 +287,30 @@ function MyDrawer() {
           drawerIcon: ({ focused, size }) => (
             <View
               style={{
-                backgroundColor: "#FFAE74",
+                backgroundColor: "#E19FE3",
                 width: 260,
                 height: 60,
                 borderWidth: 2,
-                borderColor: "black",
+                borderColor: "#C565C8",
                 borderRadius: 12,
                 alignItems: "center",
                 marginLeft: -8,
                 flexDirection: "row",
               }}
             >
-              <Text style={{ fontSize: 22, color: "white", marginLeft: 10 }}>
+              {
+                <Icon
+                  name="self-improvement"
+                  size={34}
+                  color="white"
+                  containerStyle={{
+                    justifyContent: "center",
+                    marginLeft: 10,
+                  }}
+                  onPress={() => props.nav.navigate("Profil")}
+                />
+              }
+              <Text style={{ fontSize: 21, color: "white", marginLeft: 10 }}>
                 Espace Bien-Être
               </Text>
             </View>
