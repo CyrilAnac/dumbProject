@@ -17,6 +17,7 @@ import MapView from "react-native-maps";
 import { Icon } from "react-native-elements"; //voir overlay pour popup
 import Search from "../boutons/Search";
 import Rappels from "./Rappels";
+import Map from "./Map";
 //import ConditionsU from "../popups/ConditionsU";
 
 export default function Home({ navigation }) {
@@ -48,11 +49,11 @@ export default function Home({ navigation }) {
       <View style={styles.containerHome}>
         <Text style={styles.bonjourText}>Bonjour Johanna !</Text>
         <Smiley />
-        <LayoutRappels />
+        <LayoutRappels nav={navigation} />
         <InformationCancer nav={navigation} />
         <MaListeSymp />
         <Search nav={navigation} />
-        <Map nav={navigation} />
+        <SmallMap nav={navigation} />
       </View>
     </ScrollView>
   );
@@ -99,10 +100,10 @@ function Smiley(props) {
     </View>
   );
 }
-function LayoutRappels(_props) {
+function LayoutRappels(props) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Rappels")}
+      onPress={() => props.nav.navigate("Rappels")}
       style={styles.containerRappels}
     >
       <View style={styles.group2}>
@@ -132,14 +133,19 @@ function LayoutRappels(_props) {
 function InformationCancer(props) {
   return (
     <View style={styles.containerInfoCancer}>
-      <View>
+      <View style={{ flexDirection: "row" }}>
         <Text style={{ fontSize: 17, marginBottom: 8, marginLeft: 25 }}>
-          Apprendre et agir
+          Comprendre et agir
         </Text>
+        <TouchableOpacity onPress={() => props.nav.navigate("FichesCancer")}>
+          <Text style={{ color: "orange", marginLeft: 110, fontSize: 17 }}>
+            Voir toute les fiches
+          </Text>
+        </TouchableOpacity>
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={styles.imagesInfoCancer}>
-          <TouchableHighlight onPress={() => props.navigation.navigate("Map")}>
+          <TouchableHighlight onPress={() => navigation.navigate("Map")}>
             {/*onPress={() => Alert.alert("Fiche SEIN")} */}
             <Image
               source={require("../../assets/IMG_3759.jpg")}
@@ -190,13 +196,13 @@ function MaListeSymp(props) {
   );
 }
 
-function Map(props) {
+function SmallMap(props) {
   return (
     //onPress={navigation.navigate("Map")} TODO ajouter un onPress pour acceder a la page Map
     <View style={{ marginBottom: 40 }}>
       <View style={{ flexDirection: "row", marginTop: 34 }}>
         <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+        <TouchableOpacity onPress={() => props.nav.navigate("Map")}>
           <Text style={{ color: "orange", marginLeft: 85, fontSize: 17 }}>
             Voir toute la carte
           </Text>
@@ -215,7 +221,7 @@ function Map(props) {
           elevation: 5, //android
         }}
       >
-        <TouchableOpacity onPress={() => navigation.navigate("Map")}>
+        <TouchableOpacity>
           <MapView
             provider={MapView.PROVIDER_MAPVIEW}
             showsUserLocation="true" //https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md

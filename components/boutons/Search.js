@@ -59,7 +59,7 @@ export default function Search(props) {
           justifyContent: "center",
           marginLeft: 8,
         }}
-        onPress={() => props.nav.navigate("Recherche")}
+        //onPress={() => props.nav.navigate("Recherche")}
       />
     </View>
   );
