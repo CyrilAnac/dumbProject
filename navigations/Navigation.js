@@ -19,8 +19,9 @@ import Rappels from "../components/pages/Rappels";
 import { Alert, TouchableOpacity, Button } from "react-native";
 import { enableScreens } from "react-native-screens";
 import React, { Children, useState } from "react";
-import ConditionsU from "../components/popups/ConditionsU";
+import Conditions from "../components/pages/Conditions";
 import MesInformations from "../components/pages/MesInformations";
+import FichesCancer from "../components/pages/FichesCancer";
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -84,7 +85,7 @@ function RootHome() {
       />*/}
       <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Map"
-        component={Map}
+        component={RootMap}
         options={{
           headerTitle: () => (
             <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
@@ -102,6 +103,20 @@ function RootHome() {
         options={{
           headerTitle: () => (
             <Text style={{ color: "#FFFFFF", fontSize: 20 }}>Mes Rappels</Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
+      <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
+        name="FichesCancer"
+        component={FichesCancer}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Fiches d'informations sur les cancers
+            </Text>
           ),
           headerStyle: {
             backgroundColor: "#FFAE74",
@@ -164,6 +179,27 @@ function RootMesInformations() {
           headerTitle: () => (
             <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
               Mes Informations
+            </Text>
+          ),
+          headerStyle: {
+            backgroundColor: "#FFAE74",
+          },
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
+
+function RootConditions() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Conditions d'Utilisations"
+        component={Conditions}
+        options={{
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
+              Conditions d'Utilisations
             </Text>
           ),
           headerStyle: {
@@ -317,7 +353,10 @@ function MyDrawer() {
           ),
         }}
       />
-      <Drawer.Screen name="Conditions d'Utilisations" component={ConditionsU} />
+      <Drawer.Screen
+        name="Conditions d'Utilisations"
+        component={RootConditions}
+      />
       <Drawer.Screen name="Mentions Légales" component={RootHome} />
       <Drawer.Screen name="Aide" component={RootHome} />
     </Drawer.Navigator>
