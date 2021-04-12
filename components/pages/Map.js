@@ -22,7 +22,7 @@ export default function Map({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={{ position: "absolute", zIndex: 5, alignSelf: "center" }}>
-        <Search />
+        <Search text={"Recherchez un professionnel"} color={"white"} />
       </View>
 
       <MapView
