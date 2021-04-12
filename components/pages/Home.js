@@ -68,34 +68,62 @@ function Smiley(props) {
         </Text>
       </View>
       <View style={styles.group4}>
-        <Icon
+        {/*<Icon
           name="emoji-emotions"
           size={48}
           color="rgba(2,196,13,1)"
           onPress={() => Alert.alert("'Smiley Vert' pressed")}
           style={styles.icon3}
-        />
-        <Icon
+        />*/}
+        <TouchableOpacity onPress={() => Alert.alert("Smiley Happy pressed")}>
+          <Image
+            source={require("../../assets/grinning-face-emoji.png")}
+            resizeMode="contain"
+            style={styles.icon3}
+          />
+        </TouchableOpacity>
+        {/*<Icon
           name="sentiment-satisfied"
           size={48}
           color="rgba(242,233,3,1)"
           onPress={() => Alert.alert("'Smiley Jaune' pressed")}
           style={styles.icon3}
-        />
-        <Icon
+        />*/}
+        <TouchableOpacity onPress={() => Alert.alert("Smiley Ok pressed")}>
+          <Image
+            source={require("../../assets/slightly-smiling-face.png")}
+            resizeMode="contain"
+            style={styles.icon3}
+          />
+        </TouchableOpacity>
+        {/*<Icon
           name="sentiment-neutral"
           size={48}
           color="orange"
           onPress={() => Alert.alert("'Smiley Orange' pressed")}
           style={styles.icon3}
-        />
-        <Icon
+        />*/}
+        <TouchableOpacity onPress={() => Alert.alert("Smiley Bof pressed")}>
+          <Image
+            source={require("../../assets/neutral-face-emoji.png")}
+            resizeMode="contain"
+            style={styles.icon3}
+          />
+        </TouchableOpacity>
+        {/*<Icon
           name="sick"
           size={48}
           color="rgba(7,174,232,1)"
           onPress={() => Alert.alert("'Smiley Sick' pressed")}
           style={styles.icon3}
-        />
+        />*/}
+        <TouchableOpacity onPress={() => Alert.alert("Smiley Sad pressed")}>
+          <Image
+            source={require("../../assets/dizzy-face-emoji.png")}
+            resizeMode="contain"
+            style={styles.icon2}
+          />
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -145,35 +173,34 @@ function InformationCancer(props) {
       </View>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         <View style={styles.imagesInfoCancer}>
-          <TouchableHighlight onPress={() => navigation.navigate("Map")}>
-            {/*onPress={() => Alert.alert("Fiche SEIN")} */}
+          <TouchableOpacity onPress={() => Alert.alert("Fiche SEIN")}>
             <Image
               source={require("../../assets/IMG_3759.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             />
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => Alert.alert("Fiche PEAU")}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert("Fiche PEAU")}>
             <Image
               source={require("../../assets/IMG_3760.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             />
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => Alert.alert("Fiche LEUCEMIES")}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert("Fiche LEUCEMIES")}>
             <Image
               source={require("../../assets/IMG_3756.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             ></Image>
-          </TouchableHighlight>
-          <TouchableHighlight onPress={() => Alert.alert("Fiche PROSTATE")}>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => Alert.alert("Fiche PROSTATE")}>
             <Image
               source={require("../../assets/IMG_3757.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             ></Image>
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
       </ScrollView>
     </View>
@@ -316,8 +343,7 @@ const styles = StyleSheet.create({
   group4: {
     flexDirection: "row",
     justifyContent: "center",
-    //alignContent: 'center',
-    marginLeft: -32, //car j'arrive pas a placer le groupe des 4 smileys au centre vertical
+    alignContent: "center",
     //alignSelf: 'center'
   },
   icon: {
@@ -326,16 +352,17 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   icon2: {
-    color: "rgba(232,222,74,1)",
-    fontSize: 50,
-    marginLeft: 35,
+    //color: "rgba(232,222,74,1)",
+    width: 50,
+    height: 50,
     marginTop: 4,
   },
   icon3: {
-    color: "rgba(236,182,92,1)",
-    fontSize: 50,
+    //color: "rgba(236,182,92,1)",
     marginTop: 4,
-    marginLeft: 35,
+    marginRight: 35,
+    width: 50,
+    height: 50,
   },
   groupUrgence: {
     width: 50,
