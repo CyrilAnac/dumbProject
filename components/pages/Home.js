@@ -29,7 +29,9 @@ export default function Home({ navigation }) {
           name="search"
           color="#FFFFFF"
           containerStyle={{ marginBottom: 10, marginRight: 10 }}
-          onPress={() => navigation.navigate("Recherche")}
+          onPress={(
+            text = "Recherchez un symtôme, un médicament, un molécule"
+          ) => navigation.navigate("Recherche")}
         />
       ),
       headerLeft: () => (
@@ -52,7 +54,10 @@ export default function Home({ navigation }) {
         <LayoutRappels nav={navigation} />
         <InformationCancer nav={navigation} />
         <MaListeSymp />
-        <Search nav={navigation} />
+        <Search
+          nav={navigation}
+          text={"Recherchez un symtôme, un médicament, un molécule"}
+        />
         <SmallMap nav={navigation} />
       </View>
     </ScrollView>
@@ -175,28 +180,28 @@ function InformationCancer(props) {
         <View style={styles.imagesInfoCancer}>
           <TouchableOpacity onPress={() => Alert.alert("Fiche SEIN")}>
             <Image
-              source={require("../../assets/IMG_3759.jpg")}
+              source={require("../../assets/SEIN.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Alert.alert("Fiche PEAU")}>
             <Image
-              source={require("../../assets/IMG_3760.jpg")}
+              source={require("../../assets/PEAU.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Alert.alert("Fiche LEUCEMIES")}>
             <Image
-              source={require("../../assets/IMG_3756.jpg")}
+              source={require("../../assets/LEUCEMIES.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             ></Image>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => Alert.alert("Fiche PROSTATE")}>
             <Image
-              source={require("../../assets/IMG_3757.jpg")}
+              source={require("../../assets/PROSTATE.jpg")}
               resizeMode="contain"
               style={styles.imageInfoCancer}
             ></Image>

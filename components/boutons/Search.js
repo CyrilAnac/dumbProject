@@ -22,7 +22,7 @@ export default function Search(props) {
           width: 324,
           height: 40,
           backgroundColor: "#F1F1F1",
-          borderColor: "#F3F3F3",
+          borderColor: "#C4C4C4",
           borderRadius: 100,
           borderWidth: 1,
           paddingLeft: 8,
@@ -31,7 +31,8 @@ export default function Search(props) {
       >
         <TextInput
           style={{ fontStyle: "italic", marginLeft: 2 }}
-          placeholder=" Recherchez un symtôme, un médicament, un molécule "
+          //placeholder=" Recherchez un symtôme, un médicament, un molécule "
+          placeholder={props.text}
           onChangeText={(
             text
           ) => {}} /*this._searchTextInputChanged(text) --> fonction appelée qui va effectuer un traitment avec le texte text tapé}*/
@@ -59,7 +60,7 @@ export default function Search(props) {
           justifyContent: "center",
           marginLeft: 8,
         }}
-        //onPress={() => props.nav.navigate("Recherche")}
+        onPress={() => props.nav.navigate("Recherche")}
       />
     </View>
   );

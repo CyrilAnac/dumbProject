@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "N3CMyChimio",
-    "slug": "N3CMyChimio",
+    "name": "N3C MyChimio",
+    "slug": "N3C MyChimio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/Appli_Logo.png",
     "splash": {
-      "image": "./assets/Appli_Logo.png",
+      "image": "./assets/LogoChargement.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

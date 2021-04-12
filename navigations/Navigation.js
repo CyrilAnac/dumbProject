@@ -85,7 +85,7 @@ function RootHome() {
       />*/}
       <Stack.Screen //ce screen la contient la page Ordonnance + son en-tete que je défini juste en dessous
         name="Map"
-        component={RootMap}
+        component={Map}
         options={{
           headerTitle: () => (
             <Text style={{ color: "#FFFFFF", fontSize: 20 }}>
