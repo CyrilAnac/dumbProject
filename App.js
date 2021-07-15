@@ -1,70 +1,47 @@
 import * as React from "react";
-import {
-  View,
-  Text,
-  Button,
-  Image,
-  Icon,
-  StyleSheet,
-  Colors,
-} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import Recherche from "./components/Recherche";
 import Navigation from "./navigations/Navigation";
-import { NavigationActions } from "@react-navigation/native"; // <-- import useNavigation hook
-//import Menu, { MenuItem } from 'react-native-material-menu';
-import FeatherIcon from "react-native-vector-icons/Feather";
-import MaterialIconsIcon from "react-native-vector-icons/MaterialIcons";
-
-// function HomeScreen({ navigation }) {
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Text>Home Screen</Text>
-//       <Button
-//         title="Rechercher"
-//         onPress={() => navigation.navigate("Recherche")}
-//       >
-//         Rechercher
-//       </Button>
-//     </View>
-//   );
-// }
-
-// function HomeToolbar() {
-//   return (
-//     <View
-//       style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-//     ></View>
-//   );
-//   /*<FeatherIcon name="menu" style={styles.icon}></FeatherIcon>
-//       <MaterialIconsIcon name="search" style={styles.icon2}></MaterialIconsIcon> */
-// } //        <Stack.Screen name="ButtonMenu" component={HomeToolbar} />
-// function LogoTitle() {
-//   return (
-//     <View onPress={() => Alert.alert("'Rechercher' pressed")}>
-//       <Image
-//         style={{ width: 50, height: 50 }}
-//         source={require("/Users/thomaswalosik/ReactNative/dumbProject/assets/favicon.png")}
-//       ></Image>
-//     </View>
-//   );
-// }
-// function LoupeToolbar() {
-//   return (
-//     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-//       <Icon name="search" style={styles.icon2}></Icon>
-//     </View>
-//   );
-// }
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import Home from "./components/pages/Home";
+import Recherche from "./components/pages/Recherche";
+const Drawer = createDrawerNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Navigation />
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Accueil" component={Navigation} />
+        {/*<Drawer.Screen
+          name="Informations Personnelles"
+          component={Navigation}
+        />*/}
+        <Drawer.Screen name="Mon Ordonnance" component={Recherche} />
+        <Drawer.Screen name="Espace Bien-être" component={Recherche} />
+        <Drawer.Screen name="Conditions d'Utilisations" component={Recherche} />
+        <Drawer.Screen name="Mentions Légales" component={Recherche} />
+        <Drawer.Screen name="Aide" component={Recherche} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
+
+/*return (
+    <NavigationContainer>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Accueil" component={Navigation} />
+        <Drawer.Screen
+          name="Informations Personnelles"
+          component={Navigation}
+        />
+        <Drawer.Screen name="Mon Ordonnance" component={Recherche} />
+        <Drawer.Screen name="Espace Bien-être" component={Recherche} />
+        <Drawer.Screen name="Conditions d'Utilisations" component={Recherche} />
+        <Drawer.Screen name="Mentions Légales" component={Recherche} />
+        <Drawer.Screen name="Aide" component={Recherche} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+  ); */
+
 // const styles = StyleSheet.create({
 //   container: {
 //     width: 40,

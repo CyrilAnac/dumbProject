@@ -1,17 +1,17 @@
 {
   "expo": {
-    "name": "dumbProject",
-    "slug": "dumbProject",
+    "name": "MyChimio",
+    "slug": "MyChimio",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/Appli_Logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/Appli_Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 10
     },
     "assetBundlePatterns": [
       "**/*"
@@ -27,6 +27,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "owner": "waloland"
   }
 }
