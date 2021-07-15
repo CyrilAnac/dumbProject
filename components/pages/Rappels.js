@@ -2,16 +2,21 @@ import * as React from "react";
 import {
   View,
   Text,
-  Button,
   StyleSheet,
   TextInput,
   TouchableOpacity,
 } from "react-native";
 import { Icon } from "react-native-elements";
 
+/**
+ * @param {*} navigation
+ * @returns the "Rappels" page allowing the user to add, modify or delete reminders
+ * The next reminder will be displayed via the "LayoutRappels" component of the "Home" page
+ */
 export default function Rappels({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      // Arrow button at the top left of the "Rappels" page to go to "Home" page (go back)
       headerLeft: () => (
         <Icon
           size={40}
@@ -86,6 +91,9 @@ export default function Rappels({ navigation }) {
   );
 }
 
+/**
+ * @returns a component of the "Rappels" page that displays a reminder in the list of other reminders
+ */
 function UnRappel(props) {
   return (
     <View style={stylesUnRappel.containerUnRappel}>

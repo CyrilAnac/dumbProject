@@ -1,19 +1,11 @@
-import { NavigationContext } from "@react-navigation/core";
 import * as React from "react";
-import {
-  View,
-  Button,
-  Text,
-  StyleSheet,
-  Alert,
-  TouchableOpacity,
-  ScrollView,
-  TouchableHighlight,
-  Image,
-  TextInput,
-} from "react-native";
+import { View, StyleSheet, Alert, TextInput } from "react-native";
 import { Icon } from "react-native-elements";
 
+/**
+ * @param {*} props the default text "Recherchez un symtôme, un médicament, un molécule..." or "Recherchez un professionnel de santé"
+ * @returns input text component to search a symptom, information about a molecule, etc. or input text component to search a health professional
+ */
 export default function Search(props) {
   return (
     <View style={styles.containerSearch}>
@@ -31,7 +23,6 @@ export default function Search(props) {
       >
         <TextInput
           style={{ fontStyle: "italic", marginLeft: 2 }}
-          //placeholder=" Recherchez un symtôme, un médicament, un molécule "
           placeholder={props.text}
           onChangeText={(
             text
@@ -39,19 +30,12 @@ export default function Search(props) {
           onSubmitEditing={
             () =>
               Alert.alert(
-                "'Lancée 2 la recherche'"
+                "Résultats de la recherche"
               ) /*this._loadFilms()} --> fonction qui est la meme que celle appelée par appuis du onPress()*/
           }
         ></TextInput>
       </View>
-      {/*<Button
-        title="Rechercher"
-        color="#ff5c5c"
-        position="relative"
-        onPress={() => props.nav.navigate("Recherche")}
-      >
-        Recherche
-      </Button>*/}
+
       <Icon
         size={34}
         name="search"

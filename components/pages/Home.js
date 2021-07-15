@@ -1,39 +1,35 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   View,
-  Button,
   Text,
   StyleSheet,
   Alert,
   TouchableOpacity,
   ScrollView,
-  TouchableHighlight,
-  Switch,
   Image,
-  TextInput,
 } from "react-native";
-import MaterialCommunityIconsIcon from "react-native-vector-icons/MaterialCommunityIcons";
 import MapView from "react-native-maps";
-import { Icon } from "react-native-elements"; //voir overlay pour popup
+import { Icon } from "react-native-elements";
 import Search from "../boutons/Search";
-import Rappels from "./Rappels";
-import Map from "./Map";
-//import ConditionsU from "../popups/ConditionsU";
 
+/**
+ * @param {*} navigation
+ * @returns main page of the application with all the principal functionalities
+ */
 export default function Home({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      // Icon at the top right of the page to access the search page of the application
       headerRight: () => (
         <Icon
           size={40}
           name="search"
           color="#FFFFFF"
           containerStyle={{ marginBottom: 10, marginRight: 10 }}
-          onPress={(
-            text = "Recherchez un symtôme, un médicament, un molécule"
-          ) => navigation.navigate("Recherche")}
+          onPress={() => navigation.navigate("Recherche")}
         />
       ),
+      // Icon at the top left of the page to open the application menu
       headerLeft: () => (
         <Icon
           size={40}
@@ -64,7 +60,11 @@ export default function Home({ navigation }) {
   );
 }
 
-function Smiley(props) {
+/**
+ * @returns the component that shows the 4 smileys, which can be pressed to tell the application how the user feels for personalized help
+ * Improvement: add a calendar with all the previously clicked moods
+ */
+function Smiley() {
   return (
     <View style={styles.containerSmiley}>
       <View>
@@ -133,6 +133,11 @@ function Smiley(props) {
     </View>
   );
 }
+
+/**
+ * @param {*} props navigation to go to the "Rappels" page
+ * @returns the component that shows the current date and the next reminder, which can be pressed to access the page of all reminders
+ */
 function LayoutRappels(props) {
   return (
     <TouchableOpacity
@@ -163,6 +168,10 @@ function LayoutRappels(props) {
   );
 }
 
+/**
+ * @param {*} props navigation to go to the "FichesCancer" page
+ * @returns the component that shows some cancer records in scroll mode that can be pressed to access either the cancer record in question or the page of all cancer records
+ */
 function InformationCancer(props) {
   return (
     <View style={styles.containerInfoCancer}>
@@ -172,7 +181,7 @@ function InformationCancer(props) {
         </Text>
         <TouchableOpacity onPress={() => props.nav.navigate("FichesCancer")}>
           <Text style={{ color: "orange", marginLeft: 110, fontSize: 17 }}>
-            Voir toute les fiches
+            Voir toutes les fiches
           </Text>
         </TouchableOpacity>
       </View>
@@ -212,7 +221,10 @@ function InformationCancer(props) {
   );
 }
 
-function MaListeSymp(props) {
+/**
+ * @returns the component that displays the last symptoms the patient suffered and allows access to the page to manage the symptoms
+ */
+function MaListeSymp() {
   return (
     //onclick={() => Alert.alert('Simple Button pressed')}
     <View style={styles.containerMaListeSymp}>
@@ -228,9 +240,12 @@ function MaListeSymp(props) {
   );
 }
 
+/**
+ * @param {*} props navigation to go to the "Map" page
+ * @returns the component that shows professionals and doctors near the user's GPS location
+ */
 function SmallMap(props) {
   return (
-    //onPress={navigation.navigate("Map")} TODO ajouter un onPress pour acceder a la page Map
     <View style={{ marginBottom: 40 }}>
       <View style={{ flexDirection: "row", marginTop: 34 }}>
         <Text style={{ fontSize: 17 }}>Trouver un professionnel</Text>

@@ -1,19 +1,13 @@
-import React, { Component } from "react";
-import { Button } from "react-native";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Image,
-  Switch,
-  SafeAreaView,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+/**
+ * @returns page showing the list of cancer files (pdf type)
+ */
 export default function FichesCancer({ navigation }) {
+  // Arrow button at the top left of the page to return to the main page
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -27,6 +21,7 @@ export default function FichesCancer({ navigation }) {
       ),
     });
   }, [navigation]);
+
   return (
     <View style={styles.container}>
       <ScrollView
@@ -143,85 +138,16 @@ export default function FichesCancer({ navigation }) {
             />
           </TouchableOpacity>
         </View>
-        {/*
-      <TouchableOpacity onPress={() => alert("LEUCEMIES")} style={{}}>
-        <Image
-          source={require("../../assets/item_ficheLEUCEMIES.png")}
-          resizeMethod="contain"
-          style={{
-            width: "100%",
-            height: "120%",
-            resizeMode: "cover",
-            alignSelf: "center",
-            borderWidth: 2,
-            borderRadius: 20,
-          }}
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => alert("PROSTATE")} style={{}}>
-        <Image
-          source={require("../../assets/item_fichePROSTATE.png")}
-          resizeMethod="contain"
-          style={{
-            width: "100%",
-            height: "120%",
-            resizeMode: "cover",
-            alignSelf: "center",
-            borderWidth: 2,
-            borderRadius: 20,
-          }}
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => alert("REIN")} style={{}}>
-        <Image
-          source={require("../../assets/item_ficheREIN.png")}
-          resizeMethod="contain"
-          style={{
-            width: "100%",
-            height: "120%",
-            resizeMode: "cover",
-            alignSelf: "center",
-            borderWidth: 2,
-            borderRadius: 20,
-          }}
-        />
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={() => alert("COLORECTAL")} style={{}}>
-        <Image
-          source={require("../../assets/item_ficheCOLORECTAL.png")}
-          resizeMethod="contain"
-          style={{
-            width: "100%",
-            height: "120%",
-            resizeMode: "cover",
-            alignSelf: "center",
-            borderWidth: 2,
-            borderRadius: 20,
-          }}
-        />
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => alert("TESTICULE")} style={{}}>
-        <Image
-          source={require("../../assets/item_ficheTESTICULE.png")}
-          resizeMethod="contain"
-          style={{
-            width: "100%",
-            height: "120%",
-            resizeMode: "cover",
-            alignSelf: "center",
-            borderWidth: 2,
-            borderRadius: 20,
-          }}
-        />
-      </TouchableOpacity>*/}
       </ScrollView>
     </View>
   );
 }
 
+/**
+ * @param {*} props
+ * @returns a cancer record from the list of all cancers present on the page
+ * possible upgrade : Make a loop in the main function FichesCancer by passing the information of the form in question
+ */
 function ItemCancer(props) {
   return (
     <TouchableOpacity

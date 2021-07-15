@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 import { Button } from "react-native";
-import { StyleSheet, View, Text, Switch, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput } from "react-native";
 import { Icon } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
+/**
+ * @param {*} navigation
+ * @returns the "MesInformations" page allowing the user to give his personal information for a personalized follow-up
+ */
 export default function MesInformations({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      // Arrow button at the top left of the "MesInformations" page to go to "Home" page
       headerLeft: () => (
         <Icon
           size={40}

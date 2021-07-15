@@ -1,13 +1,4 @@
 import * as React from "react";
-import {
-  View,
-  Text,
-  Button,
-  Image,
-  Icon,
-  StyleSheet,
-  Colors,
-} from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import Navigation from "./navigations/Navigation";
 import { createDrawerNavigator } from "@react-navigation/drawer";

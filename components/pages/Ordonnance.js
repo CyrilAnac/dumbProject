@@ -2,7 +2,12 @@ import * as React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 
+/**
+ * @param {*} navigation
+ * @returns the "Ordonnance" page allowing the user to insert his prescription in digital format to have it always at hand
+ */
 export default function Ordonnance({ navigation }) {
+  // Arrow button at the top left of the "Ordonnance" page to go to "Home" page
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -18,7 +23,7 @@ export default function Ordonnance({ navigation }) {
   }, [navigation]);
   return (
     <View style={styles.container}>
-      <View style={styles.OrdonnanceBoutons}>
+      <View style={styles.ordo}>
         <View style={styles.ordonnanceBouton}>
           <Icon
             size={50}
@@ -38,9 +43,7 @@ export default function Ordonnance({ navigation }) {
           />
         </View>
       </View>
-      <View style={styles.ordonnanceText}>
-        <Text style={styles.text}>Ajouter une Ordonnance</Text>
-      </View>
+      <Text style={styles.text}>Ajouter une Ordonnance</Text>
     </View>
   );
 }
@@ -58,14 +61,13 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFAE74",
     justifyContent: "center",
     borderRadius: 15,
+    marginHorizontal: 4,
   },
-  ordonnanceBoutons: {
+  ordo: {
     flexDirection: "row",
-  },
-  ordonnanceText: {
-    marginTop: 10,
   },
   text: {
     fontSize: 16,
+    marginTop: 10,
   },
 });

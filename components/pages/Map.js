@@ -2,12 +2,16 @@ import * as React from "react";
 import { View, Text, Button, StyleSheet } from "react-native";
 import { Icon } from "react-native-elements";
 import MapView from "react-native-maps";
-import { Marker } from "react-native-maps";
 import Search from "../boutons/Search";
 
+/**
+ * @param {*} navigation
+ * @returns the "Map" page of the application with the professional search component and the map where health professionals near the user are shown
+ */
 export default function Map({ navigation }) {
   React.useLayoutEffect(() => {
     navigation.setOptions({
+      // Arrow button at the top left of the current page to go to "Home" page
       headerLeft: () => (
         <Icon
           size={40}
@@ -43,8 +47,6 @@ export default function Map({ navigation }) {
           title={"Dr BLANCHARD Jean-L."}
           description={"Cancérologue"}
         />
-        {/*Voir pour mettre le composant externe Search au centre en haut de la carte/s'affiche une fois sur 2 au centre*/}
-        {/*modifier les composants text dans barre de recherche et le bouton rechercher avec fond blanc */}
       </MapView>
     </View>
   );
@@ -55,5 +57,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-//zIndex : 5

@@ -26,22 +26,6 @@ import FichesCancer from "../components/pages/FichesCancer";
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
 
-// Pour l'assignation de la variable "scene" au text du Text
-/*getLabel = {(scene) => (
-                    <View style={styles.button}>
-                      <Text style={styles.buttonText}>{props.getLabel(scene)}</Text>
-                    </View>
-                  )} */
-
-function LogoTitle() {
-  return (
-    <Image
-      style={{ width: 70, height: 70, marginTop: -10 }}
-      source={require("../assets/Logo_PNG.png")}
-    />
-  );
-}
-
 function RootHome() {
   return (
     <Stack.Navigator>
@@ -49,7 +33,9 @@ function RootHome() {
         name="Home"
         component={Home}
         options={{
-          headerTitle: (props) => <LogoTitle {...props} />,
+          headerTitle: () => (
+            <Text style={{ color: "#FFFFFF", fontSize: 20 }}></Text>
+          ),
           headerStyle: {
             backgroundColor: "#FFAE74",
             //header: props => <GradientHeader {...props} />,

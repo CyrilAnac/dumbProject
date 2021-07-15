@@ -1,17 +1,14 @@
-import React, { Component } from "react";
-import { Button } from "react-native";
-import {
-  StyleSheet,
-  View,
-  Text,
-  Switch,
-  TextInput,
-  ScrollView,
-} from "react-native";
+import React from "react";
+import { StyleSheet, View, Text, ScrollView } from "react-native";
 import { Icon } from "react-native-elements";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
+/**
+ * @param {navigation}
+ * @returns page showing the conditions of use of the application. Available from the top left menu.
+ * To be adapted as a popup that will be shown the first time you open the application after downloading
+ */
 export default function Conditions({ navigation }) {
+  // Arrow button at the top left of the page
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerLeft: () => (
@@ -25,6 +22,7 @@ export default function Conditions({ navigation }) {
       ),
     });
   }, [navigation]);
+
   return (
     <ScrollView horizontal={false} showsVerticalScrollIndicator={true}>
       <View style={styles.container}>
